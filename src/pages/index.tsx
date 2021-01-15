@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import { Box, Flex, Heading, Text, Input, FormControl, FormLabel, Container } from '@chakra-ui/react'
 
 import Layout from '../layout/Default'
@@ -11,11 +11,10 @@ const Index = (): React.ReactElement => {
   const [template, setTemplate] = useState<Template>()
   const [inputValues, setInputValues] = useState<Record<string, string>>({})
 
-  useEffect(() => {
-    if (template) {
-      setInputValues({ ...template.fields })
-    }
-  }, [template])
+  const handleTemplateSelect = (newTemplate: Template): void => {
+    setTemplate(newTemplate)
+    setInputValues({ ...newTemplate.fields })
+  }
 
   const getInputFields = (): [string, string][] => {
     return Object.entries(template?.fields)
@@ -30,7 +29,7 @@ const Index = (): React.ReactElement => {
   return (
     <Layout>
       <Flex>
-        <Sidebar onSelect={setTemplate}/>
+        <Sidebar onSelect={handleTemplateSelect}/>
         <Box pl="4">
           <Heading as="h1" color="gray.600">{template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}</Heading>
           {template && (
