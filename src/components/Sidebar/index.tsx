@@ -11,7 +11,21 @@ interface Props {
 
 const Sidebar = ({ onSelect }: Props): React.ReactElement => {
   return (
-    <Box width="256px" pr="4" borderRight="2px solid" ml="-2" borderRightColor="gray.200" height="calc(100vh - 3.5rem - 4rem)" overflowY="auto" overflowX="auto" position="fixed">
+    <Box
+      width="256px"
+      pr="4"
+      borderRight="2px solid"
+      ml="-2"
+      borderRightColor="gray.200"
+      height="calc(100vh - 3.5rem - 4rem)"
+      overflowY="auto"
+      overflowX="auto"
+      position="fixed"
+      display={{
+        base: 'none',
+        md: 'initial'
+      }}
+    >
       <Heading as="h3" fontSize="xl" color="cyan.400" ml="2" mb="8">Daftar Copypasta</Heading>
       <List listStyleType="none">
       {Templates.map(item => (

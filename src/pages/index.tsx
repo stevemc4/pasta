@@ -34,10 +34,10 @@ const Index = (): React.ReactElement => {
         <title>{`${template ? `${template.name} | ` : ''}pasta - Copypasta Untuk Semua`}</title>
       </Head>
       <Flex>
-        <Box w="256px">
+        <Box w={{ base: '0px', md: '256px' }} flexShrink={0}>
           <Sidebar onSelect={handleTemplateSelect}/>
         </Box>
-        <Box pl="4">
+        <Box pl={{ base: 0, md: 4 }}>
           <Heading as="h1" color="gray.600">{template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}</Heading>
           {template && (
             <>
