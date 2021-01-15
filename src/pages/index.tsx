@@ -37,7 +37,7 @@ const Index = (): React.ReactElement => {
         <Box w={{ base: '0px', md: '256px' }} flexShrink={0}>
           <Sidebar onSelect={handleTemplateSelect}/>
         </Box>
-        <Box pl={{ base: 0, md: 4 }}>
+        <Box pl={{ base: 0, md: 4 }} w={{ base: '100%', md: 'initial' }}>
           <Heading as="h1" color="gray.600">{template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}</Heading>
           {template && (
             <>
@@ -62,7 +62,7 @@ const Index = (): React.ReactElement => {
               <Text mb="4" color="gray.600" fontWeight="bold" fontSize="lg">
                 {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks dibawah ini untuk menyalinnya'}
               </Text>
-              <Container p="0" mb="16" cursor="pointer" onClick={onCopy}>
+              <Container p="0" mb="16" cursor="pointer" onClick={onCopy} ml={{ base: '0px', md: 'auto' }}>
               {template.template(inputValues).split(/\n/g).map(line => (
                 line.length > 0
                   ? (
