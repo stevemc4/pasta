@@ -25,9 +25,12 @@ const generateRandomizedLastCharacterRepetition = (input: string): string => {
 }
 
 const capitalize = (input: string): string => {
-  const chars = input.toLowerCase().split('')
-  const firstChar = chars.shift()?.toUpperCase()
-  return [firstChar, ...chars].join('')
+  const words = input.toLowerCase().split(' ')
+  return words.map(word => {
+    const chars = word.toLowerCase().split('')
+    const firstChar = chars.shift()?.toUpperCase()
+    return [firstChar, ...chars].join('')
+  }).join(' ')
 }
 
 const Wangy: Template<typeof Fields> = {
