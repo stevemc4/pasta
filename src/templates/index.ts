@@ -4,6 +4,7 @@ import Wangy from './wangy'
 import DateWaifu from './dateWaifu'
 import AmukanArmy from './amukanArmy'
 import TimSepakbola from './timSepakbola'
+import Nungging from './nungging'
 
 export default [
   Simp,
@@ -11,5 +12,6 @@ export default [
   Wangy,
   DateWaifu,
   AmukanArmy,
-  TimSepakbola
+  TimSepakbola,
+  Nungging
 ]
