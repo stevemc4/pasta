@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from 'react'
-import { Box, Flex, Heading, Text, Input, FormControl, FormLabel, Container } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text, Input, FormControl, FormLabel, Container, useClipboard } from '@chakra-ui/react'
 
 import Layout from '../layout/Default'
 
@@ -10,6 +10,7 @@ import Sidebar from '../components/Sidebar'
 const Index = (): React.ReactElement => {
   const [template, setTemplate] = useState<Template>()
   const [inputValues, setInputValues] = useState<Record<string, string>>({})
+  const { hasCopied, onCopy } = useClipboard(template?.template(inputValues).split(/\n/g).map(item => item.trim()).join('\n') ?? '')
 
   const handleTemplateSelect = (newTemplate: Template): void => {
     setTemplate(newTemplate)
@@ -54,7 +55,7 @@ const Index = (): React.ReactElement => {
               </Box>
               <Box mt="8">
               <Text fontSize="lg" fontWeight="bold" color="gray.500" mb="4">OUTPUT</Text>
-              <Container p="0">
+              <Container p="0" mb="8" cursor="pointer" onClick={onCopy}>
               {template.template(inputValues).split(/\n/g).map(line => (
                 line.length > 0
                   ? (
@@ -62,7 +63,7 @@ const Index = (): React.ReactElement => {
                     <Text as="p">
                       {line}
                     </Text>
-                    <br />
+                    {/* <br /> */}
                   </>
                     )
                   : (
@@ -70,6 +71,9 @@ const Index = (): React.ReactElement => {
                     )
               ))}
               </Container>
+              <Text mb="16" color="gray.600" fontWeight="bold" fontSize="lg">
+                {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks diatas untuk menyalinnya'}
+              </Text>
             </Box>
             </>
           )}
