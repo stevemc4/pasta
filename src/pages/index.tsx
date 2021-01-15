@@ -54,8 +54,11 @@ const Index = (): React.ReactElement => {
                 ))}
               </Box>
               <Box mt="8">
-              <Text fontSize="lg" fontWeight="bold" color="gray.500" mb="4">OUTPUT</Text>
-              <Container p="0" mb="8" cursor="pointer" onClick={onCopy}>
+              <Text fontSize="md" fontWeight="bold" color="gray.500" mb="1">OUTPUT</Text>
+              <Text mb="4" color="gray.600" fontWeight="bold" fontSize="lg">
+                {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks dibawah ini untuk menyalinnya'}
+              </Text>
+              <Container p="0" mb="16" cursor="pointer" onClick={onCopy}>
               {template.template(inputValues).split(/\n/g).map(line => (
                 line.length > 0
                   ? (
@@ -71,9 +74,6 @@ const Index = (): React.ReactElement => {
                     )
               ))}
               </Container>
-              <Text mb="16" color="gray.600" fontWeight="bold" fontSize="lg">
-                {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks diatas untuk menyalinnya'}
-              </Text>
             </Box>
             </>
           )}
