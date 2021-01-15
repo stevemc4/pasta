@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Layout from '../layout/Default'
+
 const Index = (): React.ReactElement => {
   return (
-    <div>
+    <Layout>
       <p>Hello World</p>
-    </div>
+    </Layout>
   )
 }
 
