@@ -3,7 +3,7 @@ import { Flex, Box, Heading } from '@chakra-ui/react'
 
 const Navbar = (): React.ReactElement => {
   return (
-    <Box px="4" py="2" borderTopWidth={4} borderTopColor="cyan.400" borderTopStyle="solid" as="nav" bg="gray.50">
+    <Box px="4" py="2" borderTopWidth={4} borderTopColor="cyan.400" borderTopStyle="solid" as="nav" bg="gray.50" position="fixed" zIndex="sticky" w="100vw" top="0">
       <Flex maxW="6xl" marginX="auto">
         <Box>
           <Heading size="lg" color="gray.600">pasta</Heading>
