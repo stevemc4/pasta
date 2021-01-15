@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react'
 import { Box, Flex, Heading, Text, Input, FormControl, FormLabel, Container, useClipboard } from '@chakra-ui/react'
+import Head from 'next/head'
 
 import Layout from '../layout/Default'
 
@@ -29,6 +30,9 @@ const Index = (): React.ReactElement => {
 
   return (
     <Layout>
+      <Head>
+        <title>{`${template ? `${template.name} | ` : ''}pasta - Copypasta Untuk Semua`}</title>
+      </Head>
       <Flex>
         <Box w="256px">
           <Sidebar onSelect={handleTemplateSelect}/>
