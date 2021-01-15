@@ -44,7 +44,7 @@ const Index = (): React.ReactElement => {
               <Box mt="8">
                 <Text fontSize="lg" fontWeight="bold" color="gray.500" mb="4">INPUT</Text>
                 {getInputFields().map(([fieldName, fieldLabel]) => (
-                  <FormControl key={fieldName}>
+                  <FormControl key={fieldName} mb="2" _last={{ marginBottom: '0' }}>
                     <FormLabel color="gray.600">{fieldLabel}</FormLabel>
                     <Input
                       type="text"
