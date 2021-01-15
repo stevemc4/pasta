@@ -29,7 +29,9 @@ const Index = (): React.ReactElement => {
   return (
     <Layout>
       <Flex>
-        <Sidebar onSelect={handleTemplateSelect}/>
+        <Box w="256px">
+          <Sidebar onSelect={handleTemplateSelect}/>
+        </Box>
         <Box pl="4">
           <Heading as="h1" color="gray.600">{template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}</Heading>
           {template && (
