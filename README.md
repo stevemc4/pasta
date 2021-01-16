@@ -1,25 +1,17 @@
-# preflightx
-Common React project scaffolding
+# pasta
+Modern copypasta generator for internet teens
 
 ## Description
 
-`preflightx` is a project template that makes starting a new project a bit easier. `preflightx` includes TypeScript, ESLint with StandardJS, and React with Next.js to make sure a project development is fun and easy
+`pasta` is a copypasta generator built with React. `pasta` was made because the needs of making random copypastas in my circle's Discord and my Facebook timeline. Beware, some copypasta templates may considered as NSFW.
 
-## Getting Started
+## Setup
 
-> Make sure you have [`degit`](https://github.com/Rich-Harris/degit) installed on your system
+1. Clone this repository
 
-1. Make a new folder for your project and `cd` into it
+2. Install the project with `npm install`
 
-2. Get a copy of this repository with `degit`
-
-`degit ShioriLabs/preflightx`
-
-3. Install the project with `npm install`
-
-4. Just `npm run dev`, and you're good to go!
-
-All scripts can be started can be seen in `package.json`
+3. Just `npm run dev`, and you're good to go!
 
 ## License
 
