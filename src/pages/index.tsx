@@ -8,13 +8,17 @@ import Layout from '../layout/Default'
 import Template from '../types/Template'
 
 import Sidebar from '../components/Sidebar'
+import Welcome from '../components/Welcome'
+import CopypastaSheet from '../components/CopypastaSheet'
 
 const Index = (): React.ReactElement => {
   const [template, setTemplate] = useState<Template>()
   const [inputValues, setInputValues] = useState<Record<string, string>>({})
   const { hasCopied, onCopy } = useClipboard(template?.template(inputValues).split(/\n/g).map(item => item.trim()).join('\n') ?? '')
+  const [openSheet, setOpenSheet] = useState(false)
 
   const handleTemplateSelect = (newTemplate: Template): void => {
+    setOpenSheet(false)
     setTemplate(newTemplate)
     setInputValues({ ...newTemplate.fields })
   }
@@ -38,11 +42,13 @@ const Index = (): React.ReactElement => {
         <Box w={{ base: '0px', md: '256px' }} flexShrink={0}>
           <Sidebar onSelect={handleTemplateSelect}/>
         </Box>
+      {template
+        ? (
         <Box pl={{ base: 0, md: 4 }} w={{ base: '100%', md: 'initial' }}>
           <Heading as="h1" color="gray.600" display={{ base: 'none', md: 'initial' }}>
             {template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}
           </Heading>
-          <Button bg="transparent" alignItems="center" p={2} m={-2} display={{ base: 'flex', md: 'none' }}>
+          <Button bg="transparent" alignItems="center" p={2} m={-2} display={{ base: 'flex', md: 'none' }} onClick={() => { setOpenSheet(true) }}>
             <Heading as="h1" color="gray.600">
               {template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}
               <ChevronDownIcon ml={2} color="cyan.400" />
@@ -88,7 +94,12 @@ const Index = (): React.ReactElement => {
             </>
           )}
         </Box>
+          )
+        : (
+        <Welcome onButtonClick={() => { setOpenSheet(true) }}/>
+          )}
       </Flex>
+      <CopypastaSheet isOpen={openSheet} onClose={() => { setOpenSheet(false) }} onSelect={handleTemplateSelect} />
     </Layout>
   )
 }
