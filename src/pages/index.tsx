@@ -51,7 +51,7 @@ const Index = (): React.ReactElement => {
           <Button bg="transparent" alignItems="center" p={2} m={-2} display={{ base: 'flex', md: 'none' }} onClick={() => { setOpenSheet(true) }}>
             <Heading as="h1" color="gray.600">
               {template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}
-              <ChevronDownIcon ml={2} color="cyan.400" />
+              <ChevronDownIcon ml={2} w={8} h={8} color="cyan.400" />
             </Heading>
           </Button>
           {template && (
