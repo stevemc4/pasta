@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react'
-import { Box, Flex, Heading, Text, Input, FormControl, FormLabel, Container, useClipboard } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text, Input, FormControl, FormLabel, Container, useClipboard, Button } from '@chakra-ui/react'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 import Head from 'next/head'
 
 import Layout from '../layout/Default'
@@ -38,7 +39,15 @@ const Index = (): React.ReactElement => {
           <Sidebar onSelect={handleTemplateSelect}/>
         </Box>
         <Box pl={{ base: 0, md: 4 }} w={{ base: '100%', md: 'initial' }}>
-          <Heading as="h1" color="gray.600">{template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}</Heading>
+          <Heading as="h1" color="gray.600" display={{ base: 'none', md: 'initial' }}>
+            {template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}
+          </Heading>
+          <Button bg="transparent" alignItems="center" p={2} m={-2} display={{ base: 'flex', md: 'none' }}>
+            <Heading as="h1" color="gray.600">
+              {template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}
+              <ChevronDownIcon ml={2} color="cyan.400" />
+            </Heading>
+          </Button>
           {template && (
             <>
               <Box mt="8">
