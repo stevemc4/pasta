@@ -63,18 +63,15 @@ const Index = (): React.ReactElement => {
                 {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks dibawah ini untuk menyalinnya'}
               </Text>
               <Container p="0" mb="16" cursor="pointer" onClick={onCopy} ml={{ base: '0px', md: 'auto' }}>
-              {template.template(inputValues).split(/\n/g).map(line => (
+              {template.template(inputValues).split(/\n/g).map((line, index) => (
                 line.length > 0
                   ? (
-                  <>
-                    <Text as="p">
-                      {line}
-                    </Text>
-                    {/* <br /> */}
-                  </>
+                      <Text as="p" key={index}>
+                        {line}
+                      </Text>
                     )
                   : (
-                  <></>
+                      <br key={index} />
                     )
               ))}
               </Container>
