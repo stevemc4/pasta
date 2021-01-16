@@ -8,6 +8,7 @@ const App = ({ Component, pageProps }: AppProps): React.ReactElement => {
     <ChakraProvider>
       <Head>
         <title>pasta - Copypasta Untuk Semua</title>
+        <meta name="description" content="pasta adalah sebuah aplikasi web untuk membuat copypasta." />
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <Component {...pageProps} />
