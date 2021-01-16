@@ -10,7 +10,7 @@ const Welcome = ({ onButtonClick }: Props): React.ReactElement => {
   return (
       <Box w="100%" my="auto">
         <Center mb="4">
-          <Image src="/Logo.png" width="128" height="128" quality={100} />
+          <Image src="/Logo.png" width="128" height="128" quality={100} alt="pasta Logo" />
         </Center>
 
         <Heading textAlign="center" color="cyan.400">Selamat Datang di pasta!</Heading>

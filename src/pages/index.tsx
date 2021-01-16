@@ -38,7 +38,7 @@ const Index = (): React.ReactElement => {
       <Head>
         <title>{`${template ? `${template.name} | ` : ''}pasta - Copypasta Untuk Semua`}</title>
       </Head>
-      <Flex h="calc(100vh - 8rem)">
+      <Flex minH="calc(100vh - 8rem)">
         <Box w={{ base: '0px', md: '256px' }} flexShrink={0}>
           <Sidebar onSelect={handleTemplateSelect}/>
         </Box>
@@ -51,7 +51,7 @@ const Index = (): React.ReactElement => {
           <Button bg="transparent" alignItems="center" p={2} m={-2} display={{ base: 'flex', md: 'none' }} onClick={() => { setOpenSheet(true) }}>
             <Heading as="h1" color="gray.600">
               {template?.name ?? 'Silakan pilih copypasta terlebih dahulu'}
-              <ChevronDownIcon ml={2} color="cyan.400" />
+              <ChevronDownIcon ml={2} w={8} h={8} color="cyan.400" />
             </Heading>
           </Button>
           {template && (
