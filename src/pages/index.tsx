@@ -68,6 +68,8 @@ const Index = (): React.ReactElement => {
                       name={fieldName}
                       onChange={handleInput}
                       value={inputValues[fieldName]}
+                      bg="white"
+                      boxShadow="sm"
                     />
                   </FormControl>
                 ))}
