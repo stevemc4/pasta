@@ -38,7 +38,7 @@ const Index = (): React.ReactElement => {
       <Head>
         <title>{`${template ? `${template.name} | ` : ''}pasta - Copypasta Untuk Semua`}</title>
       </Head>
-      <Flex h="calc(100vh - 8rem)">
+      <Flex minH="calc(100vh - 8rem)">
         <Box w={{ base: '0px', md: '256px' }} flexShrink={0}>
           <Sidebar onSelect={handleTemplateSelect}/>
         </Box>
