@@ -6,6 +6,9 @@ import AmukanArmy from './amukanArmy'
 import TimSepakbola from './timSepakbola'
 import Nungging from './nungging'
 import BukaBajuLangsung from './bukaBaju'
+import FubukiMegane from './fubukiMegane'
+import Tiananmen from './tiananmen'
+import AnimeGendeng from './animeGendeng'
 
 export default [
   Simp,
@@ -15,5 +18,8 @@ export default [
   AmukanArmy,
   TimSepakbola,
   Nungging,
-  BukaBajuLangsung
+  BukaBajuLangsung,
+  FubukiMegane,
+  Tiananmen,
+  AnimeGendeng
 ]
