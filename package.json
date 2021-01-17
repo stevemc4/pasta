@@ -1,6 +1,6 @@
 {
   "name": "pasta",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Modern copypasta generator for internet teens",
   "scripts": {
     "test": "eslint src/**/*.{ts,tsx} --fix",
@@ -26,7 +26,8 @@
     "framer-motion": "^3.2.1",
     "next": "^10.0.5",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "slugify": "^1.4.6"
   },
   "devDependencies": {
     "@types/node": "^14.14.21",
