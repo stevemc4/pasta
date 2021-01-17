@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NextLink from 'next/link'
+import Router from 'next/router'
 import { Flex, Box, Heading, Spacer, Link, IconButton, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, ListItem, List, HStack } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 
 const Navbar = (): React.ReactElement => {
   const [showDrawer, setShowDrawer] = useState(false)
+
+  useEffect(() => {
+    Router.events.on('routeChangeStart', () => {
+      setShowDrawer(false)
+    })
+    return () => {
+      Router.events.off('routeChangeStart', () => {
+        setShowDrawer(false)
+      })
+    }
+  }, [])
+
   return (
     <Box px="4" py="2" h="16" borderTopWidth={4} borderTopColor="cyan.400" borderTopStyle="solid" as="nav" bg="white" boxShadow="sm" position="fixed" zIndex="sticky" w="100vw" top="0">
       <Flex maxW="6xl" marginX="auto" h="100%" alignItems="center" color="gray.500">
