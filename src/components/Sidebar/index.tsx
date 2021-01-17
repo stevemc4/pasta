@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Heading, List, ListItem, Text, Button } from '@chakra-ui/react'
+import { Box, Heading, List, ListItem, Text, Button, VStack, Badge } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
 import Template from '../../types/Template'
@@ -43,12 +43,21 @@ const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
             borderRadius="4px"
             transition="background 0.2s, color 0.2s"
             cursor="pointer"
+            h="auto"
             _hover={{
               bg: activePage === item.name ? 'cyan.500' : 'cyan.100'
             }}
             onClick={() => onSelect(item)}
           >
-            <Text fontSize="lg">{item.name}</Text>
+            <VStack alignItems="flex-start" spacing={2}>
+              <Text fontSize="lg">{item.name}</Text>
+              {/* <Text fontSize="md" color={activePage === item.name ? 'gray.100' : 'gray.500'}>
+                {item.fields ? 'Dapat Diedit' : 'Statis'}
+              </Text> */}
+              <Badge colorScheme="cyan">
+                {item.fields ? 'Dinamis' : 'Statis'}
+              </Badge>
+            </VStack>
             <ChevronRightIcon ml="auto" w={8} h={8} transition="opacity 0.2s" opacity={activePage === item.name ? 1 : 0} />
           </Button>
         </ListItem>

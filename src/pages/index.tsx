@@ -56,43 +56,47 @@ const Index = (): React.ReactElement => {
           </Button>
           {template && (
             <>
+              {template.fields && (
+                <Box mt="8">
+                  <Text fontSize="lg" fontWeight="bold" color="gray.500" mb="4">INPUT</Text>
+                  {getInputFields().map(([fieldName, fieldLabel]) => (
+                    <FormControl key={`${template.name}:${fieldName}`} mb="2" _last={{ marginBottom: '0' }}>
+                      <FormLabel color="gray.600">{fieldLabel}</FormLabel>
+                      <Input
+                        type="text"
+                        borderColor="gray.400"
+                        borderRadius="4px"
+                        name={fieldName}
+                        onChange={handleInput}
+                        value={inputValues[fieldName]}
+                        bg="white"
+                        boxShadow="sm"
+                      />
+                    </FormControl>
+                  ))}
+                </Box>
+              )}
               <Box mt="8">
-                <Text fontSize="lg" fontWeight="bold" color="gray.500" mb="4">INPUT</Text>
-                {getInputFields().map(([fieldName, fieldLabel]) => (
-                  <FormControl key={`${template.name}:${fieldName}`} mb="2" _last={{ marginBottom: '0' }}>
-                    <FormLabel color="gray.600">{fieldLabel}</FormLabel>
-                    <Input
-                      type="text"
-                      borderColor="gray.400"
-                      borderRadius="4px"
-                      name={fieldName}
-                      onChange={handleInput}
-                      value={inputValues[fieldName]}
-                      bg="white"
-                      boxShadow="sm"
-                    />
-                  </FormControl>
+                {template.fields && (
+                  <Text fontSize="md" fontWeight="bold" color="gray.500" mb="1">OUTPUT</Text>
+                )}
+                <Text mb="4" color="gray.600" fontWeight="bold" fontSize="lg">
+                  {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks dibawah ini untuk menyalinnya'}
+                </Text>
+                <Container p="0" mb="16" cursor="pointer" onClick={onCopy} ml={{ base: '0px', md: 'auto' }}>
+                {template.template(inputValues).split(/\n/g).map((line, index) => (
+                  line.length > 0
+                    ? (
+                        <Text as="p" key={index}>
+                          {line}
+                        </Text>
+                      )
+                    : (
+                        <br key={index} />
+                      )
                 ))}
+                </Container>
               </Box>
-              <Box mt="8">
-              <Text fontSize="md" fontWeight="bold" color="gray.500" mb="1">OUTPUT</Text>
-              <Text mb="4" color="gray.600" fontWeight="bold" fontSize="lg">
-                {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks dibawah ini untuk menyalinnya'}
-              </Text>
-              <Container p="0" mb="16" cursor="pointer" onClick={onCopy} ml={{ base: '0px', md: 'auto' }}>
-              {template.template(inputValues).split(/\n/g).map((line, index) => (
-                line.length > 0
-                  ? (
-                      <Text as="p" key={index}>
-                        {line}
-                      </Text>
-                    )
-                  : (
-                      <br key={index} />
-                    )
-              ))}
-              </Container>
-            </Box>
             </>
           )}
         </Box>
