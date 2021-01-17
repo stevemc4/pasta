@@ -1,15 +1,17 @@
 import React from 'react'
 import { Box, Heading, List, ListItem, Text, Button } from '@chakra-ui/react'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
 import Template from '../../types/Template'
 
 import Templates from '../../templates'
 
 interface Props {
-  onSelect: (template: Template) => void
+  onSelect: (template: Template) => void,
+  activePage: string
 }
 
-const Sidebar = ({ onSelect }: Props): React.ReactElement => {
+const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
   return (
     <Box
       width="256px"
@@ -34,19 +36,20 @@ const Sidebar = ({ onSelect }: Props): React.ReactElement => {
         >
           <Button
             justifyContent="start"
-            bg="transparent"
-            color="gray.600"
+            bg={activePage === item.name ? 'cyan.400' : 'transparent'}
+            color={activePage === item.name ? 'white' : 'gray.600'}
             width="100%"
             p="2"
             borderRadius="4px"
             transition="background 0.2s"
             cursor="pointer"
             _hover={{
-              bg: 'cyan.100'
+              bg: activePage === item.name ? 'cyan.500' : 'cyan.100'
             }}
             onClick={() => onSelect(item)}
           >
             <Text fontSize="lg">{item.name}</Text>
+            <ChevronRightIcon ml="auto" w={8} h={8} transition="opacity 0.2s" opacity={activePage === item.name ? 1 : 0} />
           </Button>
         </ListItem>
       ))}
@@ -58,7 +61,8 @@ const Sidebar = ({ onSelect }: Props): React.ReactElement => {
 Sidebar.defaultProps = {
   onSelect: () => {
     // nothing
-  }
+  },
+  activePage: ''
 }
 
 export default Sidebar

@@ -7,10 +7,11 @@ import Template from '../../types/Template'
 interface Props {
   isOpen: boolean,
   onClose: () => void,
-  onSelect: (template: Template) => void
+  onSelect: (template: Template) => void,
+  activePage: string
 }
 
-const CopypastaSheet = ({ isOpen, onClose, onSelect }: Props): React.ReactElement => {
+const CopypastaSheet = ({ isOpen, onClose, onSelect, activePage }: Props): React.ReactElement => {
   return (
     <Drawer
       isOpen={isOpen}
@@ -30,8 +31,8 @@ const CopypastaSheet = ({ isOpen, onClose, onSelect }: Props): React.ReactElemen
               >
                 <Button
                   justifyContent="start"
-                  bg="transparent"
-                  color="gray.600"
+                  bg={activePage === item.name ? 'cyan.400' : 'transparent'}
+                  color={activePage === item.name ? 'white' : 'gray.600'}
                   width="100%"
                   px="2"
                   py="6"
@@ -58,7 +59,8 @@ const CopypastaSheet = ({ isOpen, onClose, onSelect }: Props): React.ReactElemen
 CopypastaSheet.defaultProps = {
   onSelect: () => {
     // nothing
-  }
+  },
+  activePage: ''
 }
 
 export default CopypastaSheet
