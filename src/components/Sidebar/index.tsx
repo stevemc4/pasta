@@ -19,7 +19,7 @@ const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
       borderRight="2px solid"
       ml="-2"
       borderRightColor="gray.200"
-      height="calc(100vh - 3.5rem - 4rem)"
+      height="calc(100vh - 8rem)"
       overflowY="auto"
       overflowX="auto"
       position="fixed"
@@ -33,6 +33,9 @@ const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
       {Templates.map(item => (
         <ListItem
           key={item.name}
+          _last={{
+            mb: 4
+          }}
         >
           <Button
             justifyContent="start"
