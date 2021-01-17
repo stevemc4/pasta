@@ -37,7 +37,7 @@ const CopypastaSheet = ({ isOpen, onClose, onSelect, activePage }: Props): React
                   px="2"
                   py="6"
                   borderRadius="4px"
-                  transition="background 0.2s"
+                  transition="background 0.2s, color 0.2s"
                   cursor="pointer"
                   _hover={{
                     bg: 'cyan.100'

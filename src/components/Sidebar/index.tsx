@@ -41,7 +41,7 @@ const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
             width="100%"
             p="2"
             borderRadius="4px"
-            transition="background 0.2s"
+            transition="background 0.2s, color 0.2s"
             cursor="pointer"
             _hover={{
               bg: activePage === item.name ? 'cyan.500' : 'cyan.100'
