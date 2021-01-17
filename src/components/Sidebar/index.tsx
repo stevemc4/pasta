@@ -23,6 +23,7 @@ const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
       overflowY="auto"
       overflowX="auto"
       position="fixed"
+      bg="gray.50"
       display={{
         base: 'none',
         md: 'initial'
