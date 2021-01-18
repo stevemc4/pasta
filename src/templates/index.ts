@@ -9,17 +9,27 @@ import BukaBajuLangsung from './bukaBaju'
 import FubukiMegane from './fubukiMegane'
 import Tiananmen from './tiananmen'
 import AnimeGendeng from './animeGendeng'
+import Simp2 from './simp2'
+import BeliAkunFF from './beliAkunFF'
+import JokeBerita from './jokeBerita'
+import IndihomoBot from './indihomoBot'
+import J2Prime from './j2prime'
 
 export default [
+  IndihomoBot,
+  JokeBerita,
+  BeliAkunFF,
   Simp,
-  Kawan,
+  Simp2,
   Wangy,
-  DateWaifu,
   AmukanArmy,
+  Tiananmen,
+  Kawan,
+  DateWaifu,
   TimSepakbola,
   Nungging,
   BukaBajuLangsung,
   FubukiMegane,
-  Tiananmen,
+  J2Prime,
   AnimeGendeng
 ]
