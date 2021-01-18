@@ -19,7 +19,7 @@ const Navbar = (): React.ReactElement => {
   }, [])
 
   return (
-    <Box px="4" pl={{ base: 0, md: 4 }} h="16" borderTopWidth={{ base: 0, md: 4 }} borderTopColor="cyan.400" borderTopStyle="solid" as="nav" bg="white" boxShadow="base" position="fixed" zIndex="sticky" w="100vw" top="0">
+    <Box pl={{ base: 0, md: 4 }} pr={4} h="16" borderTopWidth={{ base: 0, md: 4 }} borderTopColor="cyan.400" borderTopStyle="solid" as="nav" bg="white" boxShadow="base" position="fixed" zIndex="sticky" w="100vw" top="0">
       <Flex maxW="6xl" marginX="auto" h="100%" alignItems="center" color="gray.500">
         <IconButton
           aria-label="menu"
@@ -42,11 +42,12 @@ const Navbar = (): React.ReactElement => {
         <Box display={{ base: 'none', md: 'initial' }}>
           <HStack spacing={8}>
             <NextLink href="/">
-              <Link fontWeight="bold" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Beranda</Link>
+              <Link fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Beranda</Link>
             </NextLink>
             <NextLink href="/docs">
-              <Link fontWeight="bold" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Dokumentasi API</Link>
+              <Link fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Dokumentasi API</Link>
             </NextLink>
+            <Link href="https://github.com/stevemc4/pasta" target="_blank" rel="noreferrer nofollow" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>GitHub</Link>
           </HStack>
         </Box>
       </Flex>
@@ -70,6 +71,11 @@ const Navbar = (): React.ReactElement => {
                   <NextLink href="/docs">
                     <Link fontSize="xl" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Dokumentasi API</Link>
                   </NextLink>
+                </ListItem>
+                <ListItem
+                  py="2"
+                >
+                  <Link href="https://github.com/stevemc4/pasta" target="_blank" rel="noreferrer nofollow" fontSize="xl" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>GitHub</Link>
                 </ListItem>
               </List>
             </DrawerBody>
