@@ -11,7 +11,7 @@ const Default = ({ children }: Props): React.ReactElement => {
   return (
     <Box bg="gray.50" minH="100vh">
       <Navbar />
-      <Box px="4" pt="32">
+      <Box px="4" pt={{ base: 24, md: 32 }}>
         <Box maxW="6xl" marginX="auto">
           {children}
         </Box>
