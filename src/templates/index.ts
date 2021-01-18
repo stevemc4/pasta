@@ -14,6 +14,7 @@ import BeliAkunFF from './beliAkunFF'
 import JokeBerita from './jokeBerita'
 import IndihomoBot from './indihomoBot'
 import J2Prime from './j2prime'
+import KecanduanDiscord from './kecanduanDiscord'
 
 export default [
   IndihomoBot,
@@ -24,6 +25,7 @@ export default [
   Wangy,
   AmukanArmy,
   Tiananmen,
+  KecanduanDiscord,
   Kawan,
   DateWaifu,
   TimSepakbola,
