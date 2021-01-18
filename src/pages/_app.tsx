@@ -14,6 +14,7 @@ const App = ({ Component, pageProps }: AppProps): React.ReactElement => {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="application-name" content="pasta" />
         <meta name="apple-mobile-web-app-title" content="pasta" />
+        <link rel="apple-touch-icon" href="/android/android-launchericon-192-192.png" />
         <meta name="theme-color" content="#0BC5EA" />
         <meta name="msapplication-navbutton-color" content="#0BC5EA" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
