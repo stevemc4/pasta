@@ -19,12 +19,14 @@ const Navbar = (): React.ReactElement => {
   }, [])
 
   return (
-    <Box px="4" py="2" h="16" borderTopWidth={4} borderTopColor="cyan.400" borderTopStyle="solid" as="nav" bg="white" boxShadow="sm" position="fixed" zIndex="sticky" w="100vw" top="0">
+    <Box px="4" pl={{ base: 0, md: 4 }} h="16" borderTopWidth={{ base: 0, md: 4 }} borderTopColor="cyan.400" borderTopStyle="solid" as="nav" bg="white" boxShadow="base" position="fixed" zIndex="sticky" w="100vw" top="0">
       <Flex maxW="6xl" marginX="auto" h="100%" alignItems="center" color="gray.500">
         <IconButton
           aria-label="menu"
-          icon={<HamburgerIcon />}
+          icon={<HamburgerIcon w={6} h={6} />}
           mr={2}
+          w={16}
+          h={16}
           variant="ghost"
           display={{ base: 'initial', md: 'none' }}
           onClick={() => setShowDrawer(true)}
@@ -32,7 +34,7 @@ const Navbar = (): React.ReactElement => {
         <Box>
           <NextLink href="/">
             <Link _hover={{ textDecor: 'none' }}>
-              <Heading size="lg" color="gray.600" mt={-2}>pasta</Heading>
+              <Heading size="lg" color="gray.600">pasta</Heading>
             </Link>
           </NextLink>
         </Box>
@@ -52,21 +54,21 @@ const Navbar = (): React.ReactElement => {
         <DrawerOverlay>
           <DrawerContent>
           <DrawerCloseButton h={12} w={12} />
-            <DrawerHeader>Menu</DrawerHeader>
+            <DrawerHeader color="gray.900">Menu</DrawerHeader>
             <DrawerBody>
               <List>
                 <ListItem
                   py="2"
                 >
                   <NextLink href="/">
-                    <Link fontSize="xl" fontWeight="bold" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Beranda</Link>
+                    <Link fontSize="xl" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Beranda</Link>
                   </NextLink>
                 </ListItem>
                 <ListItem
                   py="2"
                 >
                   <NextLink href="/docs">
-                    <Link fontSize="xl" fontWeight="bold" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Dokumentasi API</Link>
+                    <Link fontSize="xl" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Dokumentasi API</Link>
                   </NextLink>
                 </ListItem>
               </List>
