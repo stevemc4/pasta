@@ -1,6 +1,6 @@
 {
   "name": "pasta",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Modern copypasta generator for internet teens",
   "scripts": {
     "test": "eslint src/**/*.{ts,tsx} --fix",
