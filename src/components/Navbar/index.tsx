@@ -32,7 +32,7 @@ const Navbar = (): React.ReactElement => {
           onClick={() => setShowDrawer(true)}
         />
         <Box>
-          <NextLink href="/">
+          <NextLink href="/" passHref>
             <Link _hover={{ textDecor: 'none' }}>
               <Heading size="lg" color="gray.600">pasta</Heading>
             </Link>
@@ -41,10 +41,10 @@ const Navbar = (): React.ReactElement => {
         <Spacer />
         <Box display={{ base: 'none', md: 'initial' }}>
           <HStack spacing={8}>
-            <NextLink href="/">
+            <NextLink href="/" passHref>
               <Link fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Beranda</Link>
             </NextLink>
-            <NextLink href="/docs">
+            <NextLink href="/docs" passHref>
               <Link fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Dokumentasi API</Link>
             </NextLink>
             <Link href="https://github.com/stevemc4/pasta" target="_blank" rel="noreferrer nofollow" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>GitHub</Link>
@@ -61,14 +61,14 @@ const Navbar = (): React.ReactElement => {
                 <ListItem
                   py="2"
                 >
-                  <NextLink href="/">
+                  <NextLink href="/" passHref>
                     <Link fontSize="xl" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Beranda</Link>
                   </NextLink>
                 </ListItem>
                 <ListItem
                   py="2"
                 >
-                  <NextLink href="/docs">
+                  <NextLink href="/docs" passHref>
                     <Link fontSize="xl" fontWeight="bold" color="gray.600" _hover={{ textDecor: 'none', color: 'cyan.400' }}>Dokumentasi API</Link>
                   </NextLink>
                 </ListItem>
