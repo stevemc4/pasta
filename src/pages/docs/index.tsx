@@ -84,10 +84,10 @@ const Docs = ({ pasta }: Props): React.ReactElement => {
                       lower: true
                     })}
                     {getFieldQueries().split(/\n/g).map(text => (
-                      <>
+                      <React.Fragment key={text}>
                         <br />
                         {text}
-                      </>
+                      </React.Fragment>
                     ))}
                   </Code>
                 </Box>
