@@ -1,6 +1,6 @@
 {
   "name": "pasta",
-  "version": "1.0.5",
+  "version": "1.2.0",
   "description": "Modern copypasta generator for internet teens",
   "scripts": {
     "test": "eslint src/**/*.{ts,tsx} --fix",
@@ -20,7 +20,7 @@
   "homepage": "https://github.com/stevemc4/pasta#readme",
   "dependencies": {
     "@chakra-ui/icons": "^1.0.3",
-    "@chakra-ui/react": "^1.1.4",
+    "@chakra-ui/react": "^1.1.5",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "framer-motion": "^3.2.1",

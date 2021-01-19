@@ -4,16 +4,20 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 import Head from 'next/head'
 import slug from 'slugify'
 
-import Layout from '../layout/Default'
+import Layout from '../../layout/Default'
 
-import Template from '../types/Template'
+import Template from '../../types/Template'
 
-import Sidebar from '../components/Sidebar'
-import Welcome from '../components/Welcome'
-import CopypastaSheet from '../components/CopypastaSheet'
+import Sidebar from '../../components/Sidebar'
+import Welcome from '../../components/Welcome'
+import CopypastaSheet from '../../components/CopypastaSheet'
 
-const Docs = (): React.ReactElement => {
-  const [template, setTemplate] = useState<Template>()
+interface Props {
+  pasta: Template
+}
+
+const Docs = ({ pasta }: Props): React.ReactElement => {
+  const [template, setTemplate] = useState<Template>(pasta)
   const [openSheet, setOpenSheet] = useState(false)
 
   const handleTemplateSelect = (newTemplate: Template): void => {
@@ -38,7 +42,7 @@ const Docs = (): React.ReactElement => {
       </Head>
       <Flex minH="calc(100vh - 8rem)">
         <Box w={{ base: '0px', md: '256px' }} flexShrink={0}>
-          <Sidebar onSelect={handleTemplateSelect} activePage={template?.name} />
+          <Sidebar onSelect={handleTemplateSelect} activePage={template?.name} basePath="/docs" />
         </Box>
       {template
         ? (
@@ -80,10 +84,10 @@ const Docs = (): React.ReactElement => {
                       lower: true
                     })}
                     {getFieldQueries().split(/\n/g).map(text => (
-                      <>
+                      <React.Fragment key={text}>
                         <br />
                         {text}
-                      </>
+                      </React.Fragment>
                     ))}
                   </Code>
                 </Box>
@@ -96,7 +100,7 @@ const Docs = (): React.ReactElement => {
         <Welcome onButtonClick={() => { setOpenSheet(true) }} documentationMode/>
           )}
       </Flex>
-      <CopypastaSheet isOpen={openSheet} onClose={() => { setOpenSheet(false) }} onSelect={handleTemplateSelect} activePage={template?.name} />
+      <CopypastaSheet isOpen={openSheet} onClose={() => { setOpenSheet(false) }} onSelect={handleTemplateSelect} activePage={template?.name} basePath="/" />
     </Layout>
   )
 }
