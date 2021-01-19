@@ -10,10 +10,11 @@ interface Props {
   isOpen: boolean,
   onClose: () => void,
   onSelect: (template: Template) => void,
-  activePage: string
+  activePage: string,
+  basePath: string
 }
 
-const CopypastaSheet = ({ isOpen, onClose, onSelect, activePage }: Props): React.ReactElement => {
+const CopypastaSheet = ({ isOpen, onClose, onSelect, activePage, basePath }: Props): React.ReactElement => {
   return (
     <Drawer
       isOpen={isOpen}
@@ -32,7 +33,7 @@ const CopypastaSheet = ({ isOpen, onClose, onSelect, activePage }: Props): React
               <ListItem
                 key={item.name}
               >
-                <NextLink href={`/${slug(item.name, { lower: true })}`} passHref shallow>
+                <NextLink href={`${basePath}/${slug(item.name, { lower: true })}`} passHref shallow>
                   <Button
                     justifyContent="start"
                     bg={activePage === item.name ? 'cyan.400' : 'transparent'}
@@ -73,7 +74,8 @@ CopypastaSheet.defaultProps = {
   onSelect: () => {
     // nothing
   },
-  activePage: ''
+  activePage: '',
+  basePath: ''
 }
 
 export default CopypastaSheet

@@ -10,10 +10,11 @@ import Templates from '../../templates'
 
 interface Props {
   onSelect: (template: Template) => void,
-  activePage: string
+  activePage: string,
+  basePath: string
 }
 
-const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
+const Sidebar = ({ onSelect, activePage, basePath }: Props): React.ReactElement => {
   return (
     <Box
       width="256px"
@@ -40,7 +41,7 @@ const Sidebar = ({ onSelect, activePage }: Props): React.ReactElement => {
             mb: 4
           }}
         >
-          <NextLink href={`/${slug(item.name, { lower: true })}`} passHref shallow>
+          <NextLink href={`${basePath}/${slug(item.name, { lower: true })}`} passHref shallow>
             <Button
               justifyContent="start"
               bg={activePage === item.name ? 'cyan.400' : 'transparent'}
@@ -77,7 +78,8 @@ Sidebar.defaultProps = {
   onSelect: () => {
     // nothing
   },
-  activePage: ''
+  activePage: '',
+  basePath: ''
 }
 
 export default Sidebar
