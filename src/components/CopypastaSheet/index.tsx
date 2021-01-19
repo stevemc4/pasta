@@ -1,5 +1,7 @@
 import React from 'react'
+import NextLink from 'next/link'
 import { Drawer, DrawerBody, DrawerContent, DrawerOverlay, DrawerHeader, List, Button, ListItem, Text, VStack, DrawerCloseButton } from '@chakra-ui/react'
+import slug from 'slugify'
 
 import Templates from '../../templates'
 import Template from '../../types/Template'
@@ -30,29 +32,33 @@ const CopypastaSheet = ({ isOpen, onClose, onSelect, activePage }: Props): React
               <ListItem
                 key={item.name}
               >
-                <Button
-                  justifyContent="start"
-                  bg={activePage === item.name ? 'cyan.400' : 'transparent'}
-                  color={activePage === item.name ? 'white' : 'gray.600'}
-                  width="100%"
-                  px="2"
-                  py="2"
-                  borderRadius="4px"
-                  transition="background 0.2s, color 0.2s"
-                  cursor="pointer"
-                  h="auto"
-                  _hover={{
-                    bg: 'cyan.100'
-                  }}
-                  onClick={() => onSelect(item)}
-                >
-                  <VStack alignItems="flex-start" spacing={0}>
-                    <Text fontSize="lg">{item.name}</Text>
-                    <Text fontSize="md" color={activePage === item.name ? 'gray.100' : 'gray.500'}>
-                      {item.fields ? 'Dinamis' : 'Statis'}
-                    </Text>
-                  </VStack>
-                </Button>
+                <NextLink href={`/${slug(item.name, { lower: true })}`} passHref shallow>
+                  <Button
+                    justifyContent="start"
+                    bg={activePage === item.name ? 'cyan.400' : 'transparent'}
+                    color={activePage === item.name ? 'white' : 'gray.600'}
+                    width="100%"
+                    px="2"
+                    py="2"
+                    borderRadius="4px"
+                    transition="background 0.2s, color 0.2s"
+                    cursor="pointer"
+                    h="auto"
+                    _hover={{
+                      bg: 'cyan.100'
+                    }}
+                    onClick={() => onSelect(item)}
+                    as="a"
+
+                  >
+                    <VStack alignItems="flex-start" spacing={0}>
+                      <Text fontSize="lg">{item.name}</Text>
+                      <Text fontSize="md" color={activePage === item.name ? 'gray.100' : 'gray.500'}>
+                        {item.fields ? 'Dinamis' : 'Statis'}
+                      </Text>
+                    </VStack>
+                  </Button>
+                </NextLink>
               </ListItem>
             ))}
             </List>

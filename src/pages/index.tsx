@@ -1,7 +1,9 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Flex, Heading, Text, Input, FormControl, FormLabel, Container, useClipboard, Button } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import Head from 'next/head'
+import Router from 'next/router'
+import slug from 'slugify'
 
 import Layout from '../layout/Default'
 
@@ -10,16 +12,31 @@ import Template from '../types/Template'
 import Sidebar from '../components/Sidebar'
 import Welcome from '../components/Welcome'
 import CopypastaSheet from '../components/CopypastaSheet'
+import Templates from '../templates'
 
-const Index = (): React.ReactElement => {
-  const [template, setTemplate] = useState<Template>()
-  const [inputValues, setInputValues] = useState<Record<string, string>>({})
-  const { hasCopied, onCopy } = useClipboard(template?.template(inputValues).split(/\n/g).map(item => item.trim()).join('\n') ?? '')
+interface Props {
+  pasta: Template
+}
+
+const Index = ({ pasta }: Props): React.ReactElement => {
+  const [template, setTemplate] = useState<Template>(pasta)
+  const [inputValues, setInputValues] = useState<Record<string, string>>(pasta?.fields ? { ...pasta.fields } : undefined)
+  const { hasCopied, onCopy } = useClipboard(template?.template ? template.template(inputValues).split(/\n/g).map(item => item.trim()).join('\n') : '')
   const [openSheet, setOpenSheet] = useState(false)
+
+  useEffect(() => {
+    if (pasta) {
+      const selectedTemplate = Templates.find(templ => templ.name === pasta.name)
+      if (selectedTemplate) {
+        setTemplate(selectedTemplate)
+      }
+    }
+  }, [])
 
   const handleTemplateSelect = (newTemplate: Template): void => {
     setOpenSheet(false)
     setTemplate(newTemplate)
+    Router.push(`/${slug(newTemplate.name, { lower: true })}`, undefined, { shallow: true })
     setInputValues({ ...newTemplate.fields })
   }
 
@@ -60,7 +77,7 @@ const Index = (): React.ReactElement => {
                 <Box mt="8">
                   <Text fontSize="lg" fontWeight="bold" color="gray.500" mb="4">INPUT</Text>
                   {getInputFields().map(([fieldName, fieldLabel]) => (
-                    <FormControl key={`${template.name}:${fieldName}`} mb="2" _last={{ marginBottom: '0' }}>
+                    <FormControl key={`${template.name}:${fieldName}`} mb="2" _last={{ marginBottom: '0' }} id={`${template.name}:${fieldName}`}>
                       <FormLabel color="gray.600">{fieldLabel}</FormLabel>
                       <Input
                         type="text"
@@ -84,7 +101,7 @@ const Index = (): React.ReactElement => {
                   {hasCopied ? 'Teks disalin' : 'Klik atau sentuh teks dibawah ini untuk menyalinnya'}
                 </Text>
                 <Container p="0" mb="16" cursor="pointer" onClick={onCopy} ml={{ base: '0px', md: 'auto' }}>
-                {template.template(inputValues).split(/\n/g).map((line, index) => (
+                {template?.template && template.template(inputValues).split(/\n/g).map((line, index) => (
                   line.length > 0
                     ? (
                         <Text as="p" key={index}>
@@ -108,6 +125,10 @@ const Index = (): React.ReactElement => {
       <CopypastaSheet isOpen={openSheet} onClose={() => { setOpenSheet(false) }} onSelect={handleTemplateSelect} activePage={template?.name} />
     </Layout>
   )
+}
+
+Index.defaultProps = {
+  pasta: undefined
 }
 
 export default Index
