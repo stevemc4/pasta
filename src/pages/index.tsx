@@ -54,6 +54,13 @@ const Index = ({ pasta }: Props): React.ReactElement => {
     <Layout>
       <Head>
         <title>{`${template ? `${template.name} | ` : ''}pasta - Copypasta Untuk Semua`}</title>
+        { template
+          ? (
+          <meta name="description" content={`Buat copypasta ${template.name} dan copypasta lainnya di pasta - Copypasta Untuk Semua!`} />
+            )
+          : (
+          <meta name="description" content="Buat copypasta stress dan unik di pasta - Copypasta Untuk Semua" />
+            )}
       </Head>
       <Flex minH="calc(100vh - 8rem)">
         <Box w={{ base: '0px', md: '256px' }} flexShrink={0}>
